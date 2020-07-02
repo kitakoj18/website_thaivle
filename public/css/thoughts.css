@@ -39,3 +39,30 @@
     transform: scale(1.2);
 }
 
+.modal{
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal.open{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-text{
+    height: 80%;
+    width: 80%;
+    margin: auto;
+    transform: scale(0.5);
+    transition: all 0.25s ease-out;
+}
+
+.modal-text.open{
+    transform: scale(1);
+}
