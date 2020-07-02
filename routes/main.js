@@ -11,4 +11,6 @@ router.get('/thoughts', routesController.thoughts);
 
 router.get('/contact', routesController.contact);
 
+router.post('/contact', routesController.sendEmail);
+
 module.exports = router;
