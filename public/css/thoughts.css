@@ -46,8 +46,13 @@
     left: 0;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     pointer-events: none;
+    transition: .75s ease-out;
+    z-index: 100;
 }
 
 .modal.open{
@@ -55,14 +60,15 @@
     pointer-events: all;
 }
 
-.modal-text{
+.modal-text-area{
     height: 80%;
-    width: 80%;
-    margin: auto;
+    width: 100%;
+    background-color: white;
     transform: scale(0.5);
     transition: all 0.25s ease-out;
 }
 
-.modal-text.open{
+
+.modal-text-area.open{
     transform: scale(1);
 }
