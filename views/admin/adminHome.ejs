@@ -3,11 +3,15 @@
 
 <head>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/write-blog.css">
     <script src="https://cdn.tiny.cloud/1/<%= tinyAPI %>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
       tinymce.init({
-        selector: '#textarea'
+        selector: '#textbox',
+        skin: "oxide-dark",
+        content_css: "dark",
+        height: 500
       });
     </script>
 
@@ -15,17 +19,21 @@
 
 <body>
     <%- include('../includes/header.ejs') %>
-    <h1>
-        This is the admin page!
-    </h1>
-    <h1>TinyMCE Quick Start Guide</h1>
+    
+    <main>
+        <div class='input-area'>
 
-    <div>
-        <form method="POST" action="/admin/post-blog">
-          <textarea id="textarea" name="blogContent">Start your blog here, Thai Le :)</textarea>
+            <div class="page-info">
+                <h1>Write a blog post below!</h1>
+            </div>
 
-          <button class="blog-submit" type="submit">Submit</button>
-        </form>
-    </div>
+            <form method="POST" action="/admin/post-blog">
+              <textarea id="textbox" name="blogContent">Start your blog here, Thai Le :)</textarea>
+    
+              <button class="blog-submit" type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+
 
 </body>

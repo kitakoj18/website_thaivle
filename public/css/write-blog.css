@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.page-info{
+    width: 100%;
+    text-align: left;
+    margin: 20px 0px;
+}
+
+.input-area{
+    width: 90%;
+    margin: auto;
+}
+
+.blog-submit{
+    width: 125px;
+    margin: 15px 0px;
+    background-color: rgb(27, 42, 54);
+    color: rgb(211, 213, 217);
+    font-size: 18px;
+    float: right;
+}
