@@ -7,6 +7,8 @@ exports.home = (req, res, next) =>{
 
 exports.postBlog = (req, res, next) =>{
 
-    console.log(req.body.blogContent);
+    const blogTitle = req.body.title;
+    const blogContent = req.body.blogContent;
+
     res.redirect('/admin');
 }

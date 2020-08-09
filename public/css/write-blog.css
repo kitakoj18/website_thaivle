@@ -4,6 +4,25 @@
     margin: 0px;
 }
 
+.form-control {
+    margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input{
+  display: block;
+  width: 30%;
+  margin-bottom: 0.25rem;
+  font: inherit;
+}
+
+.form-control input{
+  border: 1px solid #a1a1a1;
+  font: inherit;
+  border-radius: 2px;
+  padding: 5px;
+}
+
 .page-info{
     width: 100%;
     text-align: left;
