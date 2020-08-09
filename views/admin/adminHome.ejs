@@ -7,7 +7,7 @@
 
     <script>
       tinymce.init({
-        selector: '#mytextarea'
+        selector: '#textarea'
       });
     </script>
 
@@ -21,8 +21,10 @@
     <h1>TinyMCE Quick Start Guide</h1>
 
     <div>
-        <form method="post">
-          <textarea id="mytextarea">Hello, World!</textarea>
+        <form method="POST" action="/admin/post-blog">
+          <textarea id="textarea" name="blogContent">Start your blog here, Thai Le :)</textarea>
+
+          <button class="blog-submit" type="submit">Submit</button>
         </form>
     </div>
 
