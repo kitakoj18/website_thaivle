@@ -10,10 +10,14 @@ exports.home = (req, res, next) =>{
 exports.postBlog = (req, res, next) =>{
 
     const blogTitle = req.body.title;
+    // add check if blogThumbnail exists since can be rejected if not right file type
+    // added / to beginning to make absolute path
+    const blogThumbnailUrl = '/' + req.file.path;
     const blogContent = req.body.blogContent;
 
     const blogPost = new Blog({
         blogTitle: blogTitle,
+        blogThumbnailUrl: blogThumbnailUrl,
         blogContent: blogContent
     })
 

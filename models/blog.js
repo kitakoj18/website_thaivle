@@ -6,6 +6,10 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    blogThumbnailUrl: {
+        type: String,
+        required: true
+    },
     blogContent: {
         type: String,
         required: true
