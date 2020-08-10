@@ -1,3 +1,5 @@
+const Blog = require('../models/blog');
+
 const dotenv = require('dotenv').config();
 const API_KEY_sendgrid = process.env.SENDGRID_API;
 
@@ -19,7 +21,14 @@ exports.research = (req, res, next) =>{
 };
 
 exports.thoughts = (req, res, next) =>{
-    res.render('thoughts')
+
+    Blog.find()
+        .then(blogs =>{
+            res.render('thoughts', {
+                blogs: blogs
+            })
+        })
+        
 };
 
 exports.contact = (req, res, next) =>{
