@@ -9,34 +9,61 @@
 <body>
     <%- include('./includes/header.ejs') %>
 
-    <div class="blog-gallery">
+    
 
-        <div class="img-container">
-            <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
-            <p>Test Text</p>
-        </div>
-        <div class="img-container">
-            <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
-            <p>Test Text</p>
-        </div>
-        <div class="img-container">
-            <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
-            <p>Test Text</p>
-        </div>
-        <div class="img-container">
-            <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
-            <p>Test Text</p>
+    <!-- <main> -->
+        <% if(blogs.length > 0){ %>
+
+            <div class="blog-gallery">
+                <% for(let blog of blogs){ %>
+                    <div class="img-container">
+                        <img src="<%= blog.blogThumbnailUrl %>" id="<%= blog.blogTitle %>">
+                        <p><%= blog.blogTitle %></p>
+                    </div>
+                <% } %>
+            </div>
+
+            <% for(let blog of blogs){ %>
+                <div class="modal" id="<%= blog.title %>">
+                    <div class="modal-text-area">
+                        <h1><%= blog.blogTitle %></h1>
+                        <br><br>
+                        <%= blog.blogContent %>
+                    </div>
+                </div>
+            <% }
+        } else { %>
+            <h1>Check in later for some blog posts!</h1>
+        <% } %>
+    
+            <!-- <div class="img-container">
+                <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
+                <p>Test Text</p>
+            </div>
+            <div class="img-container">
+                <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
+                <p>Test Text</p>
+            </div>
+            <div class="img-container">
+                <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
+                <p>Test Text</p>
+            </div>
+            <div class="img-container">
+                <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
+                <p>Test Text</p>
+            </div>
+        
         </div>
     
-    </div>
+        <div class="modal">
+            <div class="modal-text-area">
+                <h1>This is the title</h1>
+                <p>Here is some text</p>
+                <p>Here is some more text</p>
+            </div>
+        </div> -->
 
-    <div class="modal">
-        <div class="modal-text-area">
-            <h1>This is the title</h1>
-            <p>Here is some text</p>
-            <p>Here is some more text</p>
-        </div>
-    </div>
+    <!-- </main> -->
 
     <script src="/js/thoughts.js"></script>
 
