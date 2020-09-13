@@ -50,7 +50,7 @@ app.use('/admin', adminRoutes);
 app.use(mainRoutes);
 
 mongoose.connect(
-    'mongodb+srv://kojikit:' + mongoPW + '@cluster0-sz1ci.mongodb.net/le_blogs?retryWrites=true&w=majority'
+    'mongodb+srv://koji:' + mongoPW + '@cluster0.rntda.mongodb.net/le_blogs?retryWrites=true&w=majority'
 ).then(result=>{
 
     app.listen(3000);
