@@ -8,7 +8,7 @@ const multer = require('multer');
 const mongoose = require('mongoose');
 
 const dotenv = require('dotenv').config();
-const mongoPW = process.env.MONGO_PW;
+const mongoDB_connect = process.env.MONGO_DB;
 
 const adminRoutes = require('./routes/admin');
 const mainRoutes = require('./routes/main');
@@ -50,7 +50,7 @@ app.use('/admin', adminRoutes);
 app.use(mainRoutes);
 
 mongoose.connect(
-    'mongodb+srv://koji:' + mongoPW + '@cluster0.rntda.mongodb.net/le_blogs?retryWrites=true&w=majority'
+    mongoDB_connect
 ).then(result=>{
 
     app.listen(3000);
