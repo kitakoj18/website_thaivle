@@ -9,8 +9,6 @@
 <body>
     <%- include('./includes/header.ejs') %>
 
-    
-
     <!-- <main> -->
         <% if(blogs.length > 0){ %>
 
@@ -24,17 +22,22 @@
             </div>
 
             <% for(let blog of blogs){ %>
-                <div class="modal" id="<%= blog.title %>">
+                <div class="modal" id="<%= blog.blogTitle %>">
                     <div class="modal-text-area">
                         <h1><%= blog.blogTitle %></h1>
-                        <br><br>
+                        <br><br></br></br>
                         <%= blog.blogContent %>
                     </div>
                 </div>
-            <% }
-        } else { %>
+            <% } %>
+
+        <% } else { %>
             <h1>Check in later for some blog posts!</h1>
         <% } %>
+
+    <script src="/js/thoughts.js" type="text/javascript"></script>
+
+</body>
     
             <!-- <div class="img-container">
                 <img src="/imgs/zhao-jun-Qnv0T821UGQ-unsplash.jpg" alt="">
@@ -65,6 +68,3 @@
 
     <!-- </main> -->
 
-    <script src="/js/thoughts.js"></script>
-
-</body>
