@@ -1,3 +1,4 @@
 /public/imgs
 node_modules/
 .env
+/images
