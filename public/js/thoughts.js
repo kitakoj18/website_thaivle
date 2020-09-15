@@ -1,20 +1,16 @@
-// const modal = document.querySelector('.modal');
-console.log('hey');
-const previews = document.querySelectorAll(".blog-gallery img");
-console.log(previews);
-console.log('hello')
+// script that is linked to thoughts.ejs
 
-// add a special attribute to each img element in thoughts.ejs
-// add same attribute to corresponding modal 
+const images = document.querySelectorAll(".blog-gallery img");
 
-previews.forEach(preview =>{
-    preview.addEventListener('click', () =>{
+// in thoughts.ejs, a special id is added to each img element
+// and the same id is added as a class to the corresponding modal
 
-        console.log('hi');
+images.forEach(image =>{
+    image.addEventListener('click', () =>{
 
-        // get special attribute name from preview
+        // get special id name from image
         // select modal with same attribute name and add 'open' class to it
-        const blogId = preview.getAttribute("id");
+        const blogId = image.getAttribute("id");
         const classSelection = ".modal." + blogId;
         const modal = document.querySelector(classSelection);
 
@@ -28,9 +24,3 @@ previews.forEach(preview =>{
 
     });
 });
-
-// modal.addEventListener('click', (event) =>{
-//     if(event.target.classList.contains('modal')){
-//         modal.classList.remove('open');
-//     }
-// });
