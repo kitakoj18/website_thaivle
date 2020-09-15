@@ -61,11 +61,14 @@
 }
 
 .modal-text-area{
-    height: 80%;
+    height: 100%;
     width: 100%;
     background-color: white;
+    padding: 50px;
     transform: scale(0.5);
     transition: all 0.25s ease-out;
+    max-height: 80%;
+    overflow-y: auto;
 }
 
 
