@@ -67,8 +67,10 @@ app.use(
 app.use(csrfProtection);
 
 app.use((req, res, next) =>{
+    console.log(req.session.isLoggedIn);
     res.locals.isAuthenticated = req.session.isLoggedIn;
     res.locals.csrfToken = req.csrfToken();
+    next();
 })
 
 app.use('/admin', adminRoutes);
