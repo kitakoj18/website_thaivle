@@ -19,6 +19,7 @@ const store = new MongoDBStore({
 
 const adminRoutes = require('./routes/admin');
 const mainRoutes = require('./routes/main');
+const authRoutes = require('./routes/auth');
 
 app.set('view engine', 'ejs');
 
@@ -63,6 +64,7 @@ app.use(
 
 app.use('/admin', adminRoutes);
 app.use(mainRoutes);
+app.use(authRoutes);
 
 mongoose.connect(
     mongoDB_connect
