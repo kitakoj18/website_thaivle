@@ -10,6 +10,13 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const mongoDB_connect = process.env.MONGO_DB;
 
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+const store = new MongoDBStore({
+    uri: mongoDB_connect,
+    collection: 'sessions'
+});
+
 const adminRoutes = require('./routes/admin');
 const mainRoutes = require('./routes/main');
 
@@ -45,6 +52,14 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(
+    session({
+        secret: 'secretsecretsecret',
+        resave: false,
+        saveUninitialized: false,
+        store: store
+    })
+)
 
 app.use('/admin', adminRoutes);
 app.use(mainRoutes);
