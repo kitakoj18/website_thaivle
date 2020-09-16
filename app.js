@@ -17,6 +17,9 @@ const store = new MongoDBStore({
     collection: 'sessions'
 });
 
+const csrf = require('csurf');
+const csrfProtection = csrf();
+
 const adminRoutes = require('./routes/admin');
 const mainRoutes = require('./routes/main');
 const authRoutes = require('./routes/auth');
@@ -61,6 +64,12 @@ app.use(
         store: store
     })
 )
+app.use(csrfProtection);
+
+app.use((req, res, next) =>{
+    res.locals.isAuthenticated = req.session.isLoggedIn;
+    res.locals.csrfToken = req.csrfToken();
+})
 
 app.use('/admin', adminRoutes);
 app.use(mainRoutes);
