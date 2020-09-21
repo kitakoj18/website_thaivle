@@ -95,3 +95,8 @@
     border-radius: 3px;
     cursor: pointer;
 }
+
+.add-new{
+    margin-bottom: 15px;
+    text-align: center;
+}

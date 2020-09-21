@@ -48,9 +48,11 @@
         <% } %>
 
         <% if(isAuthenticated){ %>
-            <form>
-                <button class="btn" type="submit">Delete</button>
-            </form>
+            <div class="add-new">
+                <form action="/admin" method="GET">
+                    <button class="btn" type="submit">Add New Blog!</button>
+                </form>
+            </div>
         <% } %>
 
     </main>
