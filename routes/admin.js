@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const adminController = require('../controllers/admin');
+const isAuth = require('../middleware/is-auth');
 
-router.get('/', adminController.home);
+router.get('/', isAuth, adminController.home);
 
-router.post('/post-blog', adminController.postBlog)
+router.post('/post-blog', isAuth, adminController.postBlog)
 
 module.exports = router;
