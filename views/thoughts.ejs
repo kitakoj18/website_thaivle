@@ -22,7 +22,7 @@
                         <% if(isAuthenticated){ %>
                             <div class="blog-actions">
                                 <a href="/admin/edit/<%= blog._id %>?edit=true" class="btn">Edit</a>
-                                <form>
+                                <form action="/admin/delete-product" method="POST">
                                     <input type="hidden" value="<%= blog._id %>" name="blogId">
                                     <input type="hidden" value="<%= csrfToken %>" name="_csrf">
                                     <button class="btn" type="submit">Delete</button>
@@ -45,6 +45,12 @@
 
         <% } else { %>
             <h1>Check in later for some blog posts!</h1>
+        <% } %>
+
+        <% if(isAuthenticated){ %>
+            <form>
+                <button class="btn" type="submit">Delete</button>
+            </form>
         <% } %>
 
     </main>
