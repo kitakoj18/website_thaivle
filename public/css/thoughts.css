@@ -75,3 +75,23 @@
 .modal-text-area.open{
     transform: scale(1);
 }
+
+.blog-actions{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    text-align: center;
+}
+
+.blog-actions button,
+.blog-actions a{
+    margin: 0 0.25rem;
+}
+
+.btn{
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

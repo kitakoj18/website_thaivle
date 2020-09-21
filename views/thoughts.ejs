@@ -14,9 +14,21 @@
 
             <div class="blog-gallery">
                 <% for(let blog of blogs){ %>
-                    <div class="img-container">
-                        <img src="<%= blog.blogThumbnailUrl %>" id="<%= blog.blogTitle %>">
-                        <p><%= blog.blogTitle %></p>
+                    <div class="blog-card">
+                        <div class="img-container">
+                            <img src="<%= blog.blogThumbnailUrl %>" id="<%= blog.blogTitle %>">
+                            <p><%= blog.blogTitle %></p>
+                        </div>
+                        <% if(isAuthenticated){ %>
+                            <div class="blog-actions">
+                                <a href="/admin/edit/<%= blog._id %>?edit=true" class="btn">Edit</a>
+                                <form>
+                                    <input type="hidden" value="<%= blog._id %>" name="blogId">
+                                    <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                                    <button class="btn" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        <% } %>
                     </div>
                 <% } %>
             </div>
