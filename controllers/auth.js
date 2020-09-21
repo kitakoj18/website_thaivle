@@ -16,6 +16,6 @@ exports.login = (req, res, next) =>{
     req.session.isLoggedIn = true;
     req.session.save(err =>{
         console.log(err);
-        res.redirect('/');
+        res.redirect('/thoughts');
     })
 }
