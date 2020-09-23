@@ -3,8 +3,8 @@ const Blog = require('../models/blog');
 const dotenv = require('dotenv').config();
 const tinyAPI = process.env.TINYMCE_API;
 
-exports.home = (req, res, next) =>{
-    res.render('admin/adminHome', {tinyAPI: tinyAPI});
+exports.addBlog = (req, res, next) =>{
+    res.render('admin/addBlog', {tinyAPI: tinyAPI});
 };
 
 exports.postBlog = (req, res, next) =>{
