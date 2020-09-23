@@ -23,7 +23,7 @@ exports.postBlog = (req, res, next) =>{
 
     blogPost.save();
 
-    res.redirect('/admin');
+    res.redirect('/thoughts');
 };
 
 exports.deleteBlog = (req, res, next) =>{
