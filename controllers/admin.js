@@ -24,4 +24,12 @@ exports.postBlog = (req, res, next) =>{
     blogPost.save();
 
     res.redirect('/admin');
-}
+};
+
+exports.deleteBlog = (req, res, next) =>{
+    const blogId = req.body.blogId;
+    Blog.findByIdAndRemove(blogId)
+        .then(() =>{
+            res.redirect('/thoughts');
+        })
+};
