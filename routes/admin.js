@@ -6,6 +6,8 @@ const isAuth = require('../middleware/is-auth');
 
 router.get('/', isAuth, adminController.home);
 
-router.post('/post-blog', isAuth, adminController.postBlog)
+router.post('/post-blog', isAuth, adminController.postBlog);
+
+router.post('/delete-blog', isAuth, adminController.deleteBlog);
 
 module.exports = router;
