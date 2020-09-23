@@ -10,6 +10,8 @@ router.post('/post-blog', isAuth, adminController.postBlog);
 
 router.get('/edit-blog/:blogId', isAuth, adminController.getEditBlog);
 
+router.post('/edit-blog', isAuth, adminController.postEditBlog);
+
 router.post('/delete-blog', isAuth, adminController.deleteBlog);
 
 module.exports = router;

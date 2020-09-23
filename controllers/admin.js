@@ -51,6 +51,10 @@ exports.getEditBlog = (req, res, next) =>{
         .catch(err => console.log(err));
 };
 
+exports.postEditBlog = (req, res, next) =>{
+    
+}
+
 exports.deleteBlog = (req, res, next) =>{
     const blogId = req.body.blogId;
     Blog.findByIdAndRemove(blogId)
