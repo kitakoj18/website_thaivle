@@ -6,7 +6,8 @@ const tinyAPI = process.env.TINYMCE_API;
 exports.addBlog = (req, res, next) =>{
     res.render('admin/addBlog', {
         tinyAPI: tinyAPI,
-        pageTitle: 'Write a blog post below!'
+        pageTitle: 'Write a blog post below!',
+        isEditing: false
     });
 };
 
