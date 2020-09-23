@@ -52,7 +52,20 @@ exports.getEditBlog = (req, res, next) =>{
 };
 
 exports.postEditBlog = (req, res, next) =>{
-    
+    const blogId = req.body.blogId;
+    const updatedTitle = req.body.title;
+    const updatedContent = req.body.blogContent;
+
+    Blog.findById(blogId)
+        .then(blog =>{
+            blog.blogTitle = updatedTitle;
+            blog.blogContent = updatedContent;
+            return blog.save()
+        })
+        .then(result =>{
+            res.redirect('/thoughts');
+        })
+        .catch(err => console.log(err));
 }
 
 exports.deleteBlog = (req, res, next) =>{
