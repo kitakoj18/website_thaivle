@@ -6,46 +6,74 @@
     <link rel="stylesheet" href="/css/write-blog.css">
     <script src="https://cdn.tiny.cloud/1/<%= tinyAPI %>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
-    <script>
-      tinymce.init({
-        selector: '#textbox',
-        skin: "oxide-dark",
-        content_css: "dark",
-        height: 500
-      });
-    </script>
-
 </head>
 
 <body>
+    <% if(isEditing){ %>
+        <div id="content" data-content="<%= blog.blogContent %>"></div>
+    <% } %>
+
+    <script type="text/javascript">
+        
+        let blogContent;
+        if(document.getElementById("content")){
+            blogContent = document.getElementById("content").dataset.content;
+        }
+
+        if(blogContent){
+            tinymce.init({
+                selector: '#textbox',
+                skin: "oxide-dark",
+                content_css: "dark",
+                height: 500,
+                init_instance_callback: function(editor){
+                    editor.setContent(blogContent);
+                }
+            });
+        }
+        else{
+            tinymce.init({
+                selector: '#textbox',
+                skin: "oxide-dark",
+                content_css: "dark",
+                height: 500
+            });
+        };
+    </script>
+
     <%- include('../includes/header.ejs') %>
     
     <main>
         <div class='input-area'>
 
             <div class="page-info">
-                <h1>Write a blog post below!</h1>
+                <h1><%= pageTitle %></h1>
             </div>
 
             <form method="POST" action="/admin/post-blog" enctype="multipart/form-data">
 
                 <div class="form-control">
                     <label for="blog-title">Title:</label>
-                    <input type="text" name="title" id="blog-title">
+                    <input type="text" name="title" id="blog-title" value="<% if(isEditing){ %><%= blog.blogTitle %><% } %>">
                 </div>
     
                 <div class="form-control">
                     <label for="blog-image">Select a thumbnail image:</label>
-                    <input type="file" name="thumbnail" id="blog-image">
+                    <input type="file" name="thumbnail" id="blog-image" value="<% if(isEditing){ %><%= blog.blogThumbnailUrl %><% } %>">
                 </div>
 
-                <textarea id="textbox" name="blogContent">Start your blog here, Thai Le :)</textarea>
+                <textarea id="textbox" name="blogContent">
+                    <% if(!isEditing){ %> Start your blog here, Thai Le :) <% } %>
+                </textarea>
+
+                <% if(isEditing){ %>
+                    <input type="hidden" name="blogId" value="<%= blog._id %>">
+                <% } %>
     
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <button class="blog-submit" type="submit">Submit</button>
+                <button class="blog-submit" type="submit"><% if(isEditing){ %> Update Blog! <% } else{ %> Post Blog! <% } %></button>
             </form>
         </div>
     </main>
-
 
 </body>
