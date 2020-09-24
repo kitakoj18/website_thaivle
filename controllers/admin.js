@@ -1,5 +1,7 @@
 const Blog = require('../models/blog');
 
+const fileUtil = require('../util/file');
+
 const dotenv = require('dotenv').config();
 const tinyAPI = process.env.TINYMCE_API;
 
@@ -54,15 +56,16 @@ exports.getEditBlog = (req, res, next) =>{
 exports.postEditBlog = (req, res, next) =>{
     const blogId = req.body.blogId;
     const updatedTitle = req.body.title;
-    const updatedThumbnailUrl = req.file;
+    const updatedThumbnail = req.file;
     const updatedContent = req.body.blogContent;
 
     Blog.findById(blogId)
         .then(blog =>{
             blog.blogTitle = updatedTitle;
             blog.blogContent = updatedContent;
-            if(updatedThumbnailUrl){
-                blog.blogThumbnailUrl = '/' + updatedThumbnailUrl.path;
+            if(updatedThumbnail){
+                fileUtil.deleteFile(blog.blogThumbnailUrl);
+                blog.blogThumbnailUrl = '/' + updatedThumbnail.path;
             }
             return blog.save()
         })
@@ -74,8 +77,16 @@ exports.postEditBlog = (req, res, next) =>{
 
 exports.deleteBlog = (req, res, next) =>{
     const blogId = req.body.blogId;
-    Blog.findByIdAndRemove(blogId)
-        .then(() =>{
-            res.redirect('/thoughts');
+    Blog.findById(blogId)
+        .then(blog =>{
+            if(!blog){
+                return next(new Error('Blog could not be found'))
+            }
+            fileUtil.deleteFile(blog.blogThumbnailUrl);
+            return Blog.findByIdAndRemove(blogId)
+                .then(() =>{
+                    res.redirect('/thoughts');
+                })
         })
+        .catch(err => console.log(err));
 };
