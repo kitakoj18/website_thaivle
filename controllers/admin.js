@@ -54,12 +54,16 @@ exports.getEditBlog = (req, res, next) =>{
 exports.postEditBlog = (req, res, next) =>{
     const blogId = req.body.blogId;
     const updatedTitle = req.body.title;
+    const updatedThumbnailUrl = req.file;
     const updatedContent = req.body.blogContent;
 
     Blog.findById(blogId)
         .then(blog =>{
             blog.blogTitle = updatedTitle;
             blog.blogContent = updatedContent;
+            if(updatedThumbnailUrl){
+                blog.blogThumbnailUrl = '/' + updatedThumbnailUrl.path;
+            }
             return blog.save()
         })
         .then(result =>{
