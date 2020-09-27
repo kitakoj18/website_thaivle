@@ -8,6 +8,7 @@
 
 <body>
     <%- include('./includes/header.ejs') %>
+    <% include('./includes/functions.ejs') %>
 
     <main>
         <% if(blogs.length > 0){ %>
@@ -16,7 +17,7 @@
                 <% for(let blog of blogs){ %>
                     <div class="blog-card">
                         <div class="img-container">
-                            <img src="/<%= blog.blogThumbnailUrl %>" id="<%= blog.blogTitle %>">
+                            <img src="/<%= blog.blogThumbnailUrl %>" id="<%= replaceSpace(blog.blogTitle) %>">
                             <p><%= blog.blogTitle %></p>
                         </div>
                         <% if(isAuthenticated){ %>
@@ -34,7 +35,7 @@
             </div>
 
             <% for(let blog of blogs){ %>
-                <div class="modal <%= blog.blogTitle %>">
+                <div class="modal <%= replaceSpace(blog.blogTitle) %>">
                     <div class="modal-text-area">
                         <h1><%= blog.blogTitle %></h1>
                         <br><br></br></br>
