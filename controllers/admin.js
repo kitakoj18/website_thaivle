@@ -18,7 +18,6 @@ exports.postBlog = (req, res, next) =>{
     // add check if blogThumbnail exists since can be rejected if not right file type
     // added / to beginning to make absolute path
     const blogThumbnailUrl = req.file.path;
-    console.log(blogThumbnailUrl);
     const blogContent = req.body.blogContent;
 
     const blogPost = new Blog({
