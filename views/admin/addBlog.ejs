@@ -50,7 +50,7 @@
                 <h1><%= pageTitle %></h1>
             </div>
 
-            <form method="POST" action="/admin/<% if(isEditing){ %> post-blog <% } else{ %> edit-blog <% } %>" enctype="multipart/form-data">
+            <form method="POST" action="/admin/<% if(isEditing){ %>edit-blog<% } else{ %>post-blog<% } %>" enctype="multipart/form-data">
 
                 <div class="form-control">
                     <label for="blog-title">Title:</label>
