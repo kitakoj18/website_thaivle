@@ -16,7 +16,7 @@
                 <% for(let blog of blogs){ %>
                     <div class="blog-card">
                         <div class="img-container">
-                            <img src="<%= blog.blogThumbnailUrl %>" id="<%= blog.blogTitle %>">
+                            <img src="/<%= blog.blogThumbnailUrl %>" id="<%= blog.blogTitle %>">
                             <p><%= blog.blogTitle %></p>
                         </div>
                         <% if(isAuthenticated){ %>

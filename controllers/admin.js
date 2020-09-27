@@ -17,7 +17,8 @@ exports.postBlog = (req, res, next) =>{
     const blogTitle = req.body.title;
     // add check if blogThumbnail exists since can be rejected if not right file type
     // added / to beginning to make absolute path
-    const blogThumbnailUrl = '/' + req.file.path;
+    const blogThumbnailUrl = req.file.path;
+    console.log(blogThumbnailUrl);
     const blogContent = req.body.blogContent;
 
     const blogPost = new Blog({
@@ -65,7 +66,7 @@ exports.postEditBlog = (req, res, next) =>{
             blog.blogContent = updatedContent;
             if(updatedThumbnail){
                 fileUtil.deleteFile(blog.blogThumbnailUrl);
-                blog.blogThumbnailUrl = '/' + updatedThumbnail.path;
+                blog.blogThumbnailUrl = updatedThumbnail.path;
             }
             return blog.save()
         })
